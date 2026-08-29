@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hajeer Gaming - GoldHEN Host</title>
     <link rel="stylesheet" href="../style.css">
     <style>
@@ -12,51 +14,57 @@
             padding: 20px;
         }
         .container {
-            margin-top: 50px;
+            margin-top: 40px;
         }
         h1 {
             color: #ffd700;
-            font-size: 28px;
+            font-size: 26px;
             margin-bottom: 20px;
         }
         .btn {
             display: inline-block;
             width: 90%;
             max-width: 400px;
-            font-size: 20px;
-            height: 60px;
-            line-height: 60px;
+            font-size: 18px;
+            height: 55px;
+            line-height: 55px;
             background: linear-gradient(145deg, #ffd700, #ffaa00);
             color: #1a1a1a;
             font-weight: 800;
             text-decoration: none;
             border-radius: 10px;
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
-            margin: 15px 0;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
         }
         .back-btn {
             background: #333;
             color: #fff;
-            margin-top: 20px;
-            font-size: 16px;
-            height: 50px;
-            line-height: 50px;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hajeer Gaming - GoldHEN Host</h1>
-        <p style="color: #aaa; margin-bottom: 30px;">PlayStation 4 & 5 Exploit Menu (FW 7.00 - 13.00)</p>
+        <h1>Hajeer Gaming GoldHEN Host</h1>
+        <p style="color: #aaa; margin-bottom: 20px;">Select your option below:</p>
         
-        <!-- زر تشغيل الثغرة الأساسي -->
-        <a href="#" class="btn" onclick="alert('Exploit loaded successfully!'); return false;">⚡ Run GoldHEN ⚡</a>
+        <!-- زر الثغرة الوحيد والمرتب -->
+        <button class="btn" onclick="load_goldhen()">⚡ GoldHEN ⚡</button>
         
         <br>
         
         <!-- زر الرجوع للصفحة الرئيسية -->
-        <a href="../index.html" class="btn back-btn">⬅ العودة للرئيسية</a>
+        <a href="../index.html" class="btn back-btn">⬅ Back to Home</a>
     </div>
+
+    <script>
+        function load_goldhen() {
+            // سكريبت تشغيل الثغرة الأساسي
+            alert('Loading GoldHEN...');
+        }
+    </script>
 </body>
 </html>
  
