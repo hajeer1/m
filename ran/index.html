@@ -1,34 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <title>حجير بلاستيشن - Exploit Host 7.00-13.00</title>
-    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
+    <style>
+        body {
+            background-color: #050b14;
+            color: #ffffff;
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+        .container {
+            max-width: 450px;
+            margin: auto;
+            border: 2px solid #00d2ff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            background: #091322;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e3a5f;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .title-box h2 {
+            margin: 0;
+            color: #00d2ff;
+            font-size: 18px;
+            text-align: right;
+        }
+        .title-box span {
+            font-size: 12px;
+            color: #00ffcc;
+        }
+        .badges {
+            display: flex;
+            gap: 5px;
+        }
+        .badge-hack {
+            background: #4a154b;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .badge-ver {
+            background: #1e3a5f;
+            color: #00d2ff;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .card {
+            background: #0d1b2a;
+            border: 1px solid #1b4965;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        .card label {
+            display: block;
+            color: #00d2ff;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .card .value {
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        /* شريط حالة الثغرة */
+        .status-box {
+            background: #0d1b2a;
+            border: 1px solid #00d2ff;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #00ffcc;
+        }
+        .status-box.error {
+            border-color: #ff4d4d;
+            color: #ff4d4d;
+        }
+        .warning {
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 13px;
+            margin: 15px 0;
+        }
+        .footer-box {
+            background: #0d1b2a;
+            border: 1px solid #1b4965;
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 15px;
+        }
+        .footer-box p {
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #cccccc;
+        }
+        .social-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .social-btn {
+            flex: 1;
+            background: #112233;
+            border: 1px solid #00d2ff;
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .whatsapp-btn {
+            background: #112233;
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div style="text-align: center; margin-bottom: 15px;">
-                <img src="../logopng.jpg" alt="حجير بلاستيشن" style="width: 220px; height: auto;">
-            </div>
 
-            <h1 class="main-title">
-                <span class="name-hajeer">حجير بلاستيشن</span>
-            </h1>
-            <div class="subtitle">Exploit Host</div>
-            <div class="version-badge">FW 7.00 - 13.00</div>
-        </header>
+<div class="container">
+    <!-- ترويسة الموقع -->
+    <div class="header">
+        <div class="title-box">
+            <h2>⚡ HAJEER FOR PLAYSTATION</h2>
+            <span>0798945638</span>
+        </div>
+        <div class="badges">
+            <span class="badge-hack">HACK</span>
+            <span class="badge-ver">7.00-13.0</span>
+        </div>
+    </div>
+
+    <!-- شريط حالة التحميل (بدل الـ msgs) -->
+    <div id="statusContainer" class="status-box">
+        <span id="msgs">⏳ Loading GoldHEN v2.4b18.10... Please Wait</span>
+    </div>
+
+    <!-- تفاصيل المحل -->
+    <div class="card">
+        <label>اسم المحل</label>
+        <div class="value">hajeer for PlayStation</div>
+    </div>
+
+    <div class="card">
+        <label>رقم المحل</label>
+        <div class="value">0798945638</div>
+    </div>
+
+    <div class="card">
+        <label>موقع المحل</label>
+        <div class="value">عمان – ابو نصير – دوار الثقافة</div>
+    </div>
+
+    <div class="warning">
+        ⚠️ هذه الصفحة مخصصة فقط للبلايستيشن فور
+    </div>
+
+    <!-- وسائل التواصل الاجتماعي -->
+    <div class="footer-box">
+        <p>لا تنسى تتابعنا ليصلك كل جديد</p>
         
-        <hr class="separator">
-
-        <div class="status-bar">
-            <span id="msgs" class="status-text loading">⏳ Loading GoldHEN v2.4b18.10... Please Wait</span>
+        <div class="social-row">
+            <a href="https://facebook.com" target="_blank" class="social-btn">فيسبوك<br><strong>hajeer for PlayStation</strong></a>
+            <a href="https://instagram.com" target="_blank" class="social-btn">إنستغرام<br><strong>hajeer for PlayStation</strong></a>
         </div>
         
-        <footer>
-            <p class="credit">Designed by <a href="#" class="credit-link">حجير بلاستيشن</a></p>
-            <p class="thanks">❤️ Special thanks to all scene developers</p>
-        </footer>
+        <a href="https://wa.me/962798945638" target="_blank" class="whatsapp-btn">واتساب<br>00962798945638</a>
     </div>
+</div>
 
     <script>
         var uaFull = navigator.userAgent;
@@ -38,15 +203,17 @@
         var fwNum = parseFloat(fwVersion);
 
         var msgs = document.getElementById('msgs');
+        var statusContainer = document.getElementById('statusContainer');
 
         function onScriptError() {
             msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
+            statusContainer.className = "status-box error";
         }
 
         if (!isPS4) {
             document.addEventListener("DOMContentLoaded", () => {
                 msgs.innerHTML = "Only for PS4 with Firmware 7.00 to 13.00";
-                msgs.className = "status-text error";
+                statusContainer.className = "status-box error";
             });
         } else {
             if (window.applicationCache.status == '0') {
@@ -73,7 +240,7 @@
                 } else {
                     document.addEventListener("DOMContentLoaded", () => {
                         msgs.innerHTML = 'Unsupported Firmware: <span style="color: red;">' + fwVersion + '</span>';
-                        msgs.className = "status-text error";
+                        statusContainer.className = "status-box error";
                     });
                 }
             } else {
@@ -125,4 +292,5 @@
         }
     </script>
 </body>
-    </html>
+</html>
+ 
