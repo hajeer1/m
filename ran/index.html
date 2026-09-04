@@ -5,17 +5,18 @@
     <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
     <style>
         body {
+            /* تحديث مسار وخاصيات الصورة بالاسم الجديد الصحيح 100% */
             background: linear-gradient(rgba(5, 11, 20, 0.75), rgba(5, 11, 20, 0.88)), 
-                        url('1e48e3b7d11fc2a3de62ad8a2a2d3c2882e1bb4ce6caadb.jpg');
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #ffffff;
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 10px;
+                        url('33f39cad34ac468a040ffed5a43149fb4329ec6c73326838.jpg') !important;
+            background-position: center center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            color: #ffffff !important;
+            font-family: Tahoma, sans-serif !important;
+            text-align: center !important;
+            margin: 0 !important;
+            padding: 10px !important;
         }
         .container {
             max-width: 450px;
@@ -207,21 +208,6 @@
 </div>
 
 <script>
-    // كود حقن الخلفية لضمان ثباتها بعد تحميل الثغرة وتغيير المحتوى
-    var customStyle = document.createElement('style');
-    customStyle.innerHTML = `
-        body, html {
-            background: linear-gradient(rgba(5, 11, 20, 0.75), rgba(5, 11, 20, 0.88)), 
-                        url('1e48e3b7d11fc2a3de62ad8a2a2d3c2882e1bb4ce6caadb.jpg') !important;
-            background-position: center center !important;
-            background-size: cover !important;
-            background-repeat: no-repeat !important;
-            background-attachment: fixed !important;
-            color: #ffffff !important;
-        }
-    `;
-    document.head.appendChild(customStyle);
-
     var uaFull = navigator.userAgent;
     var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
     var isPS4 = match !== null;
@@ -312,3 +298,4 @@
 
 </body>
 </html>
+ 
