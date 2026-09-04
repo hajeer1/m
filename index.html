@@ -33,31 +33,41 @@
         .title-box h2 {
             margin: 0;
             color: #00d2ff;
-            font-size: 18px;
+            font-size: 16px;
             text-align: right;
         }
         .title-box span {
-            font-size: 12px;
+            font-size: 11px;
             color: #00ffcc;
+            display: block;
+            direction: ltr;
+            text-align: right;
         }
         .badges {
             display: flex;
             gap: 5px;
         }
+        /* زر HACK الحقيقي اللي بتكبس عليه عشان يحولك */
         .badge-hack {
             background: #4a154b;
             color: #fff;
-            padding: 3px 8px;
+            padding: 5px 12px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
+            text-decoration: none;
+            border: 1px solid #9333ea;
+            cursor: pointer;
+        }
+        .badge-hack:hover {
+            background: #6b21a8;
         }
         .badge-ver {
             background: #1e3a5f;
             color: #00d2ff;
-            padding: 3px 8px;
+            padding: 5px 10px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
         }
         .card {
@@ -77,6 +87,10 @@
             font-size: 15px;
             font-weight: bold;
             color: #ffffff;
+            direction: ltr;
+        }
+        .card .value-ar {
+            direction: rtl;
         }
         .warning {
             color: #ff4d4d;
@@ -130,42 +144,36 @@
 <body>
 
 <div class="container">
-    <!-- ترويسة الموقع -->
     <div class="header">
         <div class="title-box">
-            <h2>⚡ HAJEER FOR PLAYSTATION</h2>
+            <h2>HAJEER FOR PLAYSTATION</h2>
             <span>+962798945638</span>
         </div>
         <div class="badges">
-            <span class="badge-hack">HACK</span>
+            <a href="#" id="hackBtn" class="badge-hack" onclick="triggerExploit()">HACK</a>
             <span class="badge-ver">V4.0</span>
         </div>
     </div>
 
-    <!-- اسم المحل -->
     <div class="card">
         <label>اسم المحل</label>
-        <div class="value">hajeer for PlayStation</div>
+        <div class="value value-ar">hajeer for PlayStation</div>
     </div>
 
-    <!-- رقم المحل -->
     <div class="card">
         <label>رقم المحل</label>
         <div class="value">+962798945638</div>
     </div>
 
-    <!-- موقع المحل -->
     <div class="card">
         <label>موقع المحل</label>
-        <div class="value">عمان – ابو نصير – دوار الثقافة</div>
+        <div class="value value-ar">عمان – ابو نصير – دوار الثقافة</div>
     </div>
 
-    <!-- تنبيه -->
     <div class="warning">
         ⚠️ هذه الصفحة مخصصة فقط للبلايستيشن فور
     </div>
 
-    <!-- قسم السوشيال ميديا والتواصل -->
     <div class="footer-box">
         <p>لا تنسى تتابعنا ليصلك كل جديد</p>
         
@@ -178,5 +186,22 @@
     </div>
 </div>
 
+<script>
+    function triggerExploit() {
+        var uaFull = navigator.userAgent;
+        var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
+        var isPS4 = match !== null;
+        var fwVersion = isPS4 ? match[1] : "11.00"; // افتراضي للبلايستيشن
+        var fwNum = parseFloat(fwVersion);
+
+        // هنا يتم توجيهك لصفحة التنزيل أو الكاش فور الضغط على زر HACK
+        alert("جاري تفعيل التهكير لإصدار الجهاز: " + fwVersion);
+        
+        // يمكنك توجيهه لصفحة الكاش الفرعية الخاصة بك مباشرة عند الضغط
+        window.location.href = "cachecss.html"; 
+    }
+</script>
+
 </body>
 </html>
+ 
