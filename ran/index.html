@@ -5,7 +5,10 @@
     <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
     <style>
         body {
-            background-color: #050b14;
+            /* خلفية مدمجة تجمع بين الطابع الاحترافي وصور الألعاب الشهيرة مع طبقة تظليل داكنة */
+            background: linear-gradient(rgba(5, 11, 20, 0.85), rgba(5, 11, 20, 0.92)), 
+                        url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
             color: #ffffff;
             font-family: Tahoma, sans-serif;
             text-align: center;
@@ -18,8 +21,9 @@
             border: 2px solid #00d2ff;
             border-radius: 15px;
             padding: 15px;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-            background: #091322;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            background: rgba(9, 19, 34, 0.88); /* خلفية شبه شفافة لتبرز الصورة من الخلف */
+            backdrop-filter: blur(5px);
         }
         .header {
             display: flex;
@@ -63,7 +67,7 @@
             font-weight: bold;
         }
         .card {
-            background: #0d1b2a;
+            background: rgba(13, 27, 42, 0.85);
             border: 1px solid #1b4965;
             border-radius: 10px;
             padding: 12px;
@@ -85,7 +89,7 @@
             direction: rtl;
         }
         .status-box {
-            background: #0d1b2a;
+            background: rgba(13, 27, 42, 0.9);
             border: 1px solid #00d2ff;
             border-radius: 10px;
             padding: 12px;
@@ -105,7 +109,7 @@
             margin: 15px 0;
         }
         .footer-box {
-            background: #0d1b2a;
+            background: rgba(13, 27, 42, 0.85);
             border: 1px solid #1b4965;
             border-radius: 10px;
             padding: 12px;
@@ -258,7 +262,7 @@
                 document.head.appendChild(script);
             }
             else if (fwNum >= 9.00 && fwNum <= 9.60) {
-                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                msgs.innerHTML  = "Loading Exploit for FW " + fwVersion + "...";
                 var script = document.createElement('script');
                 script.type = 'module';
                 script.src = "900/alert.js";
@@ -289,13 +293,6 @@
     }
 </script>
 
-</body>
-</html>
- 
-                }
-            }
-        }
-    </script>
 </body>
 </html>
  
