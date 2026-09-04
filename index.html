@@ -1,54 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hajeer for PlayStation - PS4 Jailbreak</title>
+    <title>حجير بلاستيشن - Exploit Host 7.00-13.00</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        body {
-            background-color: #050b14;
-            color: #ffffff;
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 10px;
-        }
-        .container {
-            max-width: 450px;
-            margin: auto;
-            border: 2px solid #00d2ff;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
-            background: #091322;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #1e3a5f;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        .title-box h2 {
-            margin: 0;
-            color: #00d2ff;
-            font-size: 16px;
-            text-align: right;
-        }
-        .title-box span {
-            font-size: 11px;
-            color: #00ffcc;
-            display: block;
-            direction: ltr;
-            text-align: right;
-        }
-        .badges {
-            display: flex;
-            gap: 5px;
-        }
-        /* زر HACK الحقيقي اللي بتكبس عليه عشان يحولك */
-        .badge-hack {
+        /* تنسيق زر HACK عشان يكون كبسة واضحة وقابلة للضغط للتحويل */
+        .clickable-hack {
             background: #4a154b;
             color: #fff;
             padding: 5px 12px;
@@ -58,150 +16,68 @@
             text-decoration: none;
             border: 1px solid #9333ea;
             cursor: pointer;
-        }
-        .badge-hack:hover {
-            background: #6b21a8;
-        }
-        .badge-ver {
-            background: #1e3a5f;
-            color: #00d2ff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 13px;
-            font-weight: bold;
-        }
-        .card {
-            background: #0d1b2a;
-            border: 1px solid #1b4965;
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 12px;
-        }
-        .card label {
-            display: block;
-            color: #00d2ff;
-            font-size: 13px;
-            margin-bottom: 5px;
-        }
-        .card .value {
-            font-size: 15px;
-            font-weight: bold;
-            color: #ffffff;
-            direction: ltr;
-        }
-        .card .value-ar {
-            direction: rtl;
-        }
-        .warning {
-            color: #ff4d4d;
-            font-weight: bold;
-            font-size: 13px;
-            margin: 15px 0;
-        }
-        .footer-box {
-            background: #0d1b2a;
-            border: 1px solid #1b4965;
-            border-radius: 10px;
-            padding: 12px;
-            margin-top: 15px;
-        }
-        .footer-box p {
-            font-size: 13px;
-            margin-bottom: 10px;
-            color: #cccccc;
-        }
-        .social-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .social-btn {
-            flex: 1;
-            background: #112233;
-            border: 1px solid #00d2ff;
-            color: #ffffff;
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 12px;
-            text-decoration: none;
             display: inline-block;
         }
-        .whatsapp-btn {
-            background: #112233;
-            border: 1px solid #00ffcc;
-            color: #00ffcc;
-            width: 100%;
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-            display: block;
-            box-sizing: border-box;
+        .clickable-hack:hover {
+            background: #6b21a8;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img src="../logopng.jpg" alt="حجير بلاستيشن" style="width: 220px; height: auto;">
+            </div>
 
-<div class="container">
-    <div class="header">
-        <div class="title-box">
-            <h2>HAJEER FOR PLAYSTATION</h2>
-            <span>+962798945638</span>
-        </div>
-        <div class="badges">
-            <a href="#" id="hackBtn" class="badge-hack" onclick="triggerExploit()">HACK</a>
-            <span class="badge-ver">V4.0</span>
-        </div>
-    </div>
-
-    <div class="card">
-        <label>اسم المحل</label>
-        <div class="value value-ar">hajeer for PlayStation</div>
-    </div>
-
-    <div class="card">
-        <label>رقم المحل</label>
-        <div class="value">+962798945638</div>
-    </div>
-
-    <div class="card">
-        <label>موقع المحل</label>
-        <div class="value value-ar">عمان – ابو نصير – دوار الثقافة</div>
-    </div>
-
-    <div class="warning">
-        ⚠️ هذه الصفحة مخصصة فقط للبلايستيشن فور
-    </div>
-
-    <div class="footer-box">
-        <p>لا تنسى تتابعنا ليصلك كل جديد</p>
+            <h1 class="main-title">
+                <span class="name-hajeer">حجير بلاستيشن</span>
+            </h1>
+            <div class="subtitle">Exploit Host</div>
+            
+            <!-- زر HACK اللي بتكبس عليه عشان يحولك للصفحة الثانية -->
+            <div style="margin-top: 10px;">
+                <a href="#" id="hackBtn" class="clickable-hack" onclick="goToNextPage()">⚡ اضغط هنا للتفعيل والانتقال</a>
+            </div>
+            
+            <div class="version-badge">FW 7.00 - 13.00</div>
+        </header>
         
-        <div class="social-row">
-            <a href="https://facebook.com" target="_blank" class="social-btn">فيسبوك<br><strong>hajeer for PlayStation</strong></a>
-            <a href="https://instagram.com" target="_blank" class="social-btn">إنستغرام<br><strong>hajeer for PlayStation</strong></a>
+        <hr class="separator">
+
+        <div class="status-bar">
+            <span id="msgs" class="status-text loading">⏳ اضغط على الزر بالأعلى للبدء...</span>
         </div>
         
-        <a href="https://wa.me/962798945638" target="_blank" class="whatsapp-btn">واتساب<br>00962798945638</a>
+        <footer>
+            <p class="credit">Designed by <a href="#" class="credit-link">حجير بلاستيشن</a></p>
+            <p class="thanks">❤️ Special thanks to all scene developers</p>
+        </footer>
     </div>
-</div>
 
-<script>
-    function triggerExploit() {
-        var uaFull = navigator.userAgent;
-        var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
-        var isPS4 = match !== null;
-        var fwVersion = isPS4 ? match[1] : "11.00"; // افتراضي للبلايستيشن
-        var fwNum = parseFloat(fwVersion);
+    <script>
+        function goToNextPage() {
+            var uaFull = navigator.userAgent;
+            var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
+            var isPS4 = match !== null;
+            var fwVersion = isPS4 ? match[1] : "11.00";
+            var fwNum = parseFloat(fwVersion);
 
-        // هنا يتم توجيهك لصفحة التنزيل أو الكاش فور الضغط على زر HACK
-        alert("جاري تفعيل التهكير لإصدار الجهاز: " + fwVersion);
-        
-        // يمكنك توجيهه لصفحة الكاش الفرعية الخاصة بك مباشرة عند الضغط
-        window.location.href = "cachecss.html"; 
-    }
-</script>
+            var msgs = document.getElementById('msgs');
+            msgs.innerHTML = "جاري التحويل للصفحة التالية...";
 
+            // هنا بحدد وين ينقلك حسب الإصدار أو بياخذك لصفحة الكاش اللي جوا الـ ran
+            if (fwNum >= 7.00 && fwNum <= 8.52) {
+                window.location.href = "cache700.html";
+            } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+                window.location.href = "cache900.html";
+            } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+                window.location.href = "cachecss.html";
+            } else {
+                window.location.href = "cacheslopkit.html";
+            }
+        }
+    </script>
 </body>
 </html>
  
