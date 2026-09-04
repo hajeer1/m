@@ -1,60 +1,206 @@
 <!DOCTYPE html>
-<html manifest="css.manifest">
+<html manifest="700.manifest">
 <head>
-    <title>Mustafa PS4 PS5 - Cache 10.00-11.02</title>
-    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hajeer for PlayStation - Cache 11.5-13.0</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #050b14;
+            color: #ffffff;
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            padding: 15px;
+            min-height: 100vh;
+            direction: rtl;
+        }
+        .gradient-wrap {
+            max-width: 450px;
+            margin: auto;
+            background: linear-gradient(135deg, #00ff88 0%, #00d2ff 50%, #8844ee 100%);
+            padding: 3px;
+            border-radius: 18px;
+        }
+        .container {
+            background: #091322;
+            border-radius: 15px;
+            padding: 15px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid #1e3a5f;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        .title-box { text-align: right; }
+        .store-name {
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 2px;
+        }
+        .bolt { color: #00ffcc; font-size: 18px; }
+        .subtitle {
+            font-size: 13px;
+            color: #00d2ff;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 2px 0 4px 0;
+        }
+        .phone { font-size: 11px; color: #8899aa; letter-spacing: 1px; }
+        .badges { display: flex; gap: 5px; align-items: flex-start; margin-top: 3px; }
+        .badge-hack {
+            background: #5b1f8a;
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .badge-ver {
+            background: #0d2a4a;
+            color: #00d2ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid #00d2ff;
+        }
+        .status-box {
+            background: #0d1b2a;
+            border: 1px solid #00d2ff;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #00ffcc;
+        }
+        .status-box.error { border-color: #ff4d4d; color: #ff4d4d; }
+        .warning {
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 13px;
+            margin: 14px 0;
+            text-align: right;
+        }
+        .footer-box {
+            background: #0d1b2a;
+            border: 1px solid #1b4965;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 14px;
+        }
+        .footer-box p {
+            font-size: 13px;
+            margin: 0 0 12px 0;
+            color: #cccccc;
+            text-align: right;
+        }
+        .social-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .social-btn {
+            flex: 1;
+            background: #0a1929;
+            border: 1px solid #1b4965;
+            color: #ffffff;
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .social-btn .platform { color: #8899aa; font-size: 11px; display: block; margin-bottom: 4px; }
+        .social-btn strong { color: #ffffff; font-size: 12px; }
+        .whatsapp-btn {
+            background: #0a1929;
+            border: 1px solid #1b4965;
+            color: #ffffff;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        .whatsapp-btn .platform { color: #8899aa; font-size: 11px; display: block; margin-bottom: 4px; }
+        .whatsapp-btn strong { color: #ffffff; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="main-title">
-                <span class="name-mustafa">Mustafa</span>
-                <span class="ps4-title">PS4</span>
-                <span class="ps5-title">PS5</span>
-            </h1>
-            <div class="subtitle">Exploit Host</div>
-            <div class="version-badge">FW 10.00 - 11.02</div>
-        </header>
-        
-        <hr class="separator">
-        
-        <div class="status-bar">
-            <span id="msgs" class="status-text loading">⏳ Starting Cache Installation...</span>
+<div class="gradient-wrap">
+<div class="container">
+    <div class="header">
+        <div class="title-box">
+            <p class="store-name"><span class="bolt">⚡</span> HAJEER FOR PLAYSTATION</p>
+            <p class="subtitle">PS4 JAILBREAK</p>
+            <p class="phone">+962798945638</p>
         </div>
-        
-        <footer>
-            <p class="credit">Designed by <a href="#" class="credit-link">Mustafa</a></p>
-            <p class="thanks">❤️ Special thanks to all scene developers</p>
-        </footer>
+        <div class="badges">
+            <span class="badge-hack">HACK</span>
+            <span class="badge-ver">7.00-8.52</span>
+        </div>
     </div>
+    <div id="statusContainer" class="status-box">
+        <span id="msgs">⏳ Starting Cache Installation...</span>
+    </div>
+    <div class="warning">⚠️ هذه الصفحة مخصصة فقط للبلايستيشن فور</div>
+    <div class="footer-box">
+        <p>لا تنسى تتابعنا ليصلك كل جديد</p>
+        <div class="social-row">
+            <a href="https://facebook.com/hajeerforplaystation" target="_blank" class="social-btn">
+                <span class="platform">فيسبوك</span>
+                <strong>hajeer for PlayStation</strong>
+            </a>
+            <a href="https://instagram.com/hajeerforplaystation" target="_blank" class="social-btn">
+                <span class="platform">إنستقرام</span>
+                <strong>hajeer for PlayStation</strong>
+            </a>
+        </div>
+        <a href="https://wa.me/962798945638" target="_blank" class="whatsapp-btn">
+            <span class="platform">واتساب</span>
+            <strong>00962798945638</strong>
+        </a>
+    </div>
+</div>
+</div>
+<script>
+    history.replaceState(null, null, 'index.html');
+    var histlength = history.length;
+    history.go(-histlength);
 
-    <script>
-        history.replaceState(null, null, 'index.html');
-        var histlength = history.length;
-        history.go(-histlength);
-        
-        var msgs = document.getElementById('msgs');
-        
-        function DLProgress(e) {
-            var Percent = Math.round(e.loaded / e.total * 100);
-            msgs.innerHTML = "Installing Offline Cache: " + Percent + "%";
-        }
-        
-        function DisplayCacheProgress() {
-            msgs.innerHTML = "Cache Installed Successfully ✔";
-            msgs.className = "status-text success";
-            setTimeout(function() {
-                msgs.innerHTML = "Now Close And Re-Open Your Browser ...";
-            }, 1500);
-        }
-        
-        window.applicationCache.addEventListener("progress", DLProgress, false);
-        window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
-        window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
-        window.applicationCache.onerror = function(e) {
-            msgs.innerHTML = "Error Installing Cache! - Clear and Re-Open Your Browser ...";
-            msgs.className = "status-text error";
-        };
-    </script>
+    var msgs = document.getElementById('msgs');
+    var statusContainer = document.getElementById('statusContainer');
+
+    function DLProgress(e) {
+        var Percent = Math.round(e.loaded / e.total * 100);
+        msgs.innerHTML = "Installing Offline Cache: " + Percent + "%";
+    }
+
+    function DisplayCacheProgress() {
+        msgs.innerHTML = "Cache Installed Successfully ✔";
+        setTimeout(function() {
+            msgs.innerHTML = "Now Close And Re-Open Your Browser ...";
+        }, 1500);
+    }
+
+    window.applicationCache.addEventListener("progress", DLProgress, false);
+    window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
+    window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
+    window.applicationCache.onerror = function(e) {
+        msgs.innerHTML = "Error Installing Cache! - Clear and Re-Open Your Browser ...";
+        statusContainer.className = "status-box error";
+    };
+</script>
 </body>
 </html>
