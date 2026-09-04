@@ -1,14 +1,19 @@
-function load_script(src, remote = true, transfer = []) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-}
-
 async function doJb() {
+  // حقن الخلفية والتصميم لضمان عدم اختفائها نهائياً طوال فترة الثغرة
+  var fixStyle = document.createElement('style');
+  fixStyle.innerHTML = `
+      body, html {
+          background: linear-gradient(rgba(5, 11, 20, 0.75), rgba(5, 11, 20, 0.88)), 
+                      url('1e48e3b7d11fc2a3de62ad8a2a2d3c2882e1bb4ce6caadb.jpg') !important;
+          background-position: center center !important;
+          background-size: cover !important;
+          background-repeat: no-repeat !important;
+          background-attachment: fixed !important;
+          color: #ffffff !important;
+      }
+  `;
+  document.head.appendChild(fixStyle);
+
   await load_script("css/misc.js");
 
   try {
@@ -112,6 +117,7 @@ async function doJb() {
     }
 
     msgs.innerHTML = "GoldHEN v2.4b18.10 Loaded ...";
+    document.head.appendChild(fixStyle); // إعادة تأكيد تثبيت الخلفية عند اكتمال التحميل
     logger.info("===END===");
   } catch (e) {
     msgs.innerHTML = "Failed to Load! Restart Your Console ...";
