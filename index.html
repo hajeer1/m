@@ -1,83 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>حجير بلاستيشن - Exploit Host 7.00-13.00</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Mustafa PS4 PS5 Exploit Host</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* تنسيق زر HACK عشان يكون كبسة واضحة وقابلة للضغط للتحويل */
-        .clickable-hack {
-            background: #4a154b;
-            color: #fff;
-            padding: 5px 12px;
-            border-radius: 5px;
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-            border: 1px solid #9333ea;
-            cursor: pointer;
+        /* إضافات بسيطة لتعويض الإيموجي */
+        .btn-icon {
             display: inline-block;
+            margin-right: 8px;
+            font-weight: 900;
+            color: #1a1a1a;
         }
-        .clickable-hack:hover {
-            background: #6b21a8;
+        .btn:hover .btn-icon {
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div style="text-align: center; margin-bottom: 15px;">
-                <img src="../logopng.jpg" alt="حجير بلاستيشن" style="width: 220px; height: auto;">
-            </div>
-
-            <h1 class="main-title">
-                <span class="name-hajeer">حجير بلاستيشن</span>
-            </h1>
-            <div class="subtitle">Exploit Host</div>
-            
-            <!-- زر HACK اللي بتكبس عليه عشان يحولك للصفحة الثانية -->
-            <div style="margin-top: 10px;">
-                <a href="#" id="hackBtn" class="clickable-hack" onclick="goToNextPage()">⚡ اضغط هنا للتفعيل والانتقال</a>
-            </div>
-            
-            <div class="version-badge">FW 7.00 - 13.00</div>
-        </header>
-        
-        <hr class="separator">
-
-        <div class="status-bar">
-            <span id="msgs" class="status-text loading">⏳ اضغط على الزر بالأعلى للبدء...</span>
-        </div>
-        
-        <footer>
-            <p class="credit">Designed by <a href="#" class="credit-link">حجير بلاستيشن</a></p>
-            <p class="thanks">❤️ Special thanks to all scene developers</p>
-        </footer>
+    <div class="title-container">
+        <h1 class="main-title">
+            <span class="name-mustafa">Mustafa</span>
+            <span class="ps4-title">PS4</span>
+            <span class="ps5-title">PS5</span>
+        </h1>
+        <div class="subtitle">Exploit Host</div>
+        <div class="version-badge">FW 7.00 - 13.00</div>
     </div>
-
-    <script>
-        function goToNextPage() {
-            var uaFull = navigator.userAgent;
-            var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
-            var isPS4 = match !== null;
-            var fwVersion = isPS4 ? match[1] : "11.00";
-            var fwNum = parseFloat(fwVersion);
-
-            var msgs = document.getElementById('msgs');
-            msgs.innerHTML = "جاري التحويل للصفحة التالية...";
-
-            // هنا بحدد وين ينقلك حسب الإصدار أو بياخذك لصفحة الكاش اللي جوا الـ ran
-            if (fwNum >= 7.00 && fwNum <= 8.52) {
-                window.location.href = "cache700.html";
-            } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-                window.location.href = "cache900.html";
-            } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-                window.location.href = "cachecss.html";
-            } else {
-                window.location.href = "cacheslopkit.html";
-            }
-        }
-    </script>
+    
+    <hr>
+    <br>
+    
+    <div id="menu">
+        <h1 style="font-size: 22px; color: #ffd700; margin-bottom: 30px;">GoldHEN Exploit Host</h1>
+        
+        <!-- زر معدل بدون إيموجي -->
+        <button class="btn" onclick="location.replace('ran/index.html')" 
+                style="width: 90%; max-width: 400px; font-size: 20px; height: 60px; background: linear-gradient(145deg, #ffd700, #ffaa00); color: #1a1a1a; font-weight: 800; box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);">
+            <span class="btn-icon">»</span> GoldHEN 7.00 - 13.00 <span class="btn-icon">«</span>
+        </button>
+        
+        <h1 style="margin-top: 40px; font-size: 16px; color: #ddd;">
+            Designed by: <a href="#" style="color: #ffd700; margin: 0 10px;">Mustafa</a>
+            <br>
+            <span style="color: #888; font-size: 14px;">A special thanks to all the devs on the scene.</span>
+        </h1>
+    </div>
 </body>
-</html>
- 
+</html> 
