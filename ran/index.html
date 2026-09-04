@@ -5,7 +5,6 @@
     <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
     <style>
         body {
-            /* استخدام أول صورة متوفرة في المجلد كخلفية شاملة وواضحة */
             background: linear-gradient(rgba(5, 11, 20, 0.75), rgba(5, 11, 20, 0.88)), 
                         url('1e48e3b7d11fc2a3de62ad8a2a2d3c2882e1bb4ce6caadb.jpg');
             background-position: center center;
@@ -208,6 +207,21 @@
 </div>
 
 <script>
+    // كود حقن الخلفية لضمان ثباتها بعد تحميل الثغرة وتغيير المحتوى
+    var customStyle = document.createElement('style');
+    customStyle.innerHTML = `
+        body, html {
+            background: linear-gradient(rgba(5, 11, 20, 0.75), rgba(5, 11, 20, 0.88)), 
+                        url('1e48e3b7d11fc2a3de62ad8a2a2d3c2882e1bb4ce6caadb.jpg') !important;
+            background-position: center center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+            color: #ffffff !important;
+        }
+    `;
+    document.head.appendChild(customStyle);
+
     var uaFull = navigator.userAgent;
     var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
     var isPS4 = match !== null;
@@ -298,4 +312,3 @@
 
 </body>
 </html>
- 
