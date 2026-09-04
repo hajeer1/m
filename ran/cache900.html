@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" manifest="offline.manifest">
 <head>
     <meta charset="UTF-8">
-    <title>hajeer for PlayStation - Cache 9.00-9.60</title>
+    <title>hajeer for PlayStation - Cache 9.00</title>
     <style>
         body {
             background: linear-gradient(135deg, #050b14 0%, #091322 100%) !important;
@@ -159,12 +159,12 @@
         </div>
         <div class="badges">
             <span class="badge-hack">HACK</span>
-            <span class="badge-ver">7.00-8.52</span>
+            <span class="badge-ver">9.00</span>
         </div>
     </div>
 
     <div id="statusContainer" class="status-box">
-        <span id="msgs">⏳ Cache Installed Successfully ...</span>
+        <span id="msgs">⏳ Installing Cache for FW 9.00... Please Wait</span>
     </div>
 
     <div class="card">
@@ -196,5 +196,16 @@
     </div>
 </div>
 
+<script>
+    // تفعيل التحديث التلقائي للتحميل والرجوع
+    window.applicationCache.addEventListener('updateready', function() {
+        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+            window.applicationCache.swapCache();
+            document.getElementById('msgs').innerHTML = "Cache Installed Successfully! - Please Close and Re-Open Browser ...";
+        }
+    }, false);
+</script>
+
 </body>
 </html>
+ 
