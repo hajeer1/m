@@ -100,6 +100,10 @@
             font-size: 14px;
             color: #00ffcc;
         }
+        .status-box.error {
+            border-color: #ff4d4d;
+            color: #ff4d4d;
+        }
         .warning {
             color: #ff4d4d;
             font-weight: bold;
@@ -164,7 +168,7 @@
     </div>
 
     <div id="statusContainer" class="status-box">
-        <span id="msgs">⏳ Initializing Cache for FW 9.00...</span>
+        <span id="msgs">⏳ Loading Exploit for FW 9.00... Please Wait</span>
     </div>
 
     <div class="card">
@@ -196,53 +200,34 @@
     </div>
 </div>
 
+<!-- تشغيل ثغرة 9.00 الفعلية بشكل صحيح بدون شاشة بيضاء -->
 <script>
-    var cacheObj = window.applicationCache;
-    var msgs = document.getElementById('msgs');
-
-    function handleCacheEvent(e) {
-        switch (cacheObj.status) {
-            case cacheObj.CHECKING:
-                msgs.innerHTML = "Checking Cache Status...";
-                break;
-            case cacheObj.DOWNLOADING:
-                msgs.innerHTML = "Downloading Cache Files... Please Wait";
-                break;
-            case cacheObj.UPDATEREADY:
-                cacheObj.swapCache();
-                msgs.innerHTML = "Cache Installed Successfully! - Please Close and Re-Open Browser.";
-                break;
-            case cacheObj.CACHED:
-                msgs.innerHTML = "Cache Installed Successfully! - Please Close and Re-Open Browser.";
-                break;
-            case cacheObj.OBSOLETE:
-                msgs.innerHTML = "Cache Obsolete. Refresh page.";
-                break;
-            case cacheObj.ERROR:
-                msgs.innerHTML = "Error loading cache! Check manifest or network.";
-                break;
+    window.applicationCache.addEventListener('updateready', function() {
+        if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+            window.applicationCache.swapCache();
+            window.location.reload();
         }
+    });
+
+    function getScript(source, callback) {
+        var gs = document.createElement('script');
+        gs.src = source;
+        gs.onload = callback;
+        gs.onerror = function() {
+            document.getElementById('msgs').innerHTML = "Error Loading Exploit Script!";
+            document.getElementById('statusContainer').className = "status-box error";
+        };
+        document.head.appendChild(gs);
     }
 
-    if (cacheObj) {
-        cacheObj.addEventListener('checking', handleCacheEvent, false);
-        cacheObj.addEventListener('downloading', handleCacheEvent, false);
-        cacheObj.addEventListener('progress', function(e) {
-            var percent = e.lengthComputable ? Math.round((e.loaded / e.total) * 100) : "";
-            msgs.innerHTML = "Downloading Cache... " + percent + "%";
-        }, false);
-        cacheObj.addEventListener('cached', handleCacheEvent, false);
-        cacheObj.addEventListener('updateready', handleCacheEvent, false);
-        cacheObj.addEventListener('error', handleCacheEvent, false);
-        cacheObj.addEventListener('noupdate', function() {
-            msgs.innerHTML = "Cache is up to date. Ready to use!";
-        }, false);
-
-        if (cacheObj.status === cacheObj.READY) {
-            msgs.innerHTML = "Cache Installed Successfully! - Please Close and Re-Open Browser.";
-        }
-    }
+    // استدعاء ملف الثغرة الأساسي الخاص بـ 9.00
+    setTimeout(function() {
+        getScript("900/alert.js", function() {
+            document.getElementById('msgs').innerHTML = "Exploit Loaded Successfully!";
+        });
+    }, 500);
 </script>
 
 </body>
 </html>
+ 
