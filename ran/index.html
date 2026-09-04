@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
     <style>
         body {
@@ -33,12 +32,15 @@
         .title-box h2 {
             margin: 0;
             color: #00d2ff;
-            font-size: 18px;
+            font-size: 16px;
             text-align: right;
         }
         .title-box span {
-            font-size: 12px;
+            font-size: 11px;
             color: #00ffcc;
+            display: block;
+            direction: ltr;
+            text-align: right;
         }
         .badges {
             display: flex;
@@ -47,7 +49,7 @@
         .badge-hack {
             background: #4a154b;
             color: #fff;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 5px;
             font-size: 12px;
             font-weight: bold;
@@ -55,7 +57,7 @@
         .badge-ver {
             background: #1e3a5f;
             color: #00d2ff;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 5px;
             font-size: 12px;
             font-weight: bold;
@@ -77,8 +79,11 @@
             font-size: 15px;
             font-weight: bold;
             color: #ffffff;
+            direction: ltr;
         }
-        /* شريط حالة الثغرة */
+        .card .value-ar {
+            direction: rtl;
+        }
         .status-box {
             background: #0d1b2a;
             border: 1px solid #00d2ff;
@@ -148,8 +153,8 @@
     <!-- ترويسة الموقع -->
     <div class="header">
         <div class="title-box">
-            <h2>⚡ HAJEER FOR PLAYSTATION</h2>
-            <span>0798945638</span>
+            <h2>HAJEER FOR PLAYSTATION</h2>
+            <span>+962798945638</span>
         </div>
         <div class="badges">
             <span class="badge-hack">HACK</span>
@@ -157,32 +162,32 @@
         </div>
     </div>
 
-    <!-- شريط حالة التحميل (بدل الـ msgs) -->
+    <!-- شريط الحالة -->
     <div id="statusContainer" class="status-box">
-        <span id="msgs">⏳ Loading GoldHEN v2.4b18.10... Please Wait</span>
+        <span id="msgs">⏳ Loading Exploit... Please Wait</span>
     </div>
 
     <!-- تفاصيل المحل -->
     <div class="card">
         <label>اسم المحل</label>
-        <div class="value">hajeer for PlayStation</div>
+        <div class="value value-ar">hajeer for PlayStation</div>
     </div>
 
     <div class="card">
         <label>رقم المحل</label>
-        <div class="value">0798945638</div>
+        <div class="value">+962798945638</div>
     </div>
 
     <div class="card">
         <label>موقع المحل</label>
-        <div class="value">عمان – ابو نصير – دوار الثقافة</div>
+        <div class="value value-ar">عمان – ابو نصير – دوار الثقافة</div>
     </div>
 
     <div class="warning">
         ⚠️ هذه الصفحة مخصصة فقط للبلايستيشن فور
     </div>
 
-    <!-- وسائل التواصل الاجتماعي -->
+    <!-- وسائل التواصل -->
     <div class="footer-box">
         <p>لا تنسى تتابعنا ليصلك كل جديد</p>
         
@@ -195,95 +200,98 @@
     </div>
 </div>
 
-    <script>
-        var uaFull = navigator.userAgent;
-        var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
-        var isPS4 = match !== null;
-        var fwVersion = isPS4 ? match[1] : "Unknown";
-        var fwNum = parseFloat(fwVersion);
+<script>
+    var uaFull = navigator.userAgent;
+    var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
+    var isPS4 = match !== null;
+    var fwVersion = isPS4 ? match[1] : "Unknown";
+    var fwNum = parseFloat(fwVersion);
 
-        var msgs = document.getElementById('msgs');
-        var statusContainer = document.getElementById('statusContainer');
+    var msgs = document.getElementById('msgs');
+    var statusContainer = document.getElementById('statusContainer');
 
-        function onScriptError() {
-            msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
+    function onScriptError() {
+        msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
+        statusContainer.className = "status-box error";
+    }
+
+    if (!isPS4) {
+        document.addEventListener("DOMContentLoaded", () => {
+            msgs.innerHTML = "Only for PS4 with Firmware 7.00 to 13.00";
             statusContainer.className = "status-box error";
-        }
-
-        if (!isPS4) {
-            document.addEventListener("DOMContentLoaded", () => {
-                msgs.innerHTML = "Only for PS4 with Firmware 7.00 to 13.00";
-                statusContainer.className = "status-box error";
-            });
-        } else {
-            if (window.applicationCache.status == '0') {
-                if (fwNum >= 7.00 && fwNum <= 8.52) {
-                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                    setTimeout(function() {
-                        window.location.replace("cache700.html");
-                    }, 500);
-                } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                    setTimeout(function() {
-                        window.location.replace("cache900.html");
-                    }, 500);
-                } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                    setTimeout(function() {
-                        window.location.replace("cachecss.html");
-                    }, 500);
-                } else if (fwNum >= 11.50 && fwNum <= 13.00) {
-                    msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                    setTimeout(function() {
-                        window.location.replace("cacheslopkit.html");
-                    }, 500);
-                } else {
-                    document.addEventListener("DOMContentLoaded", () => {
-                        msgs.innerHTML = 'Unsupported Firmware: <span style="color: red;">' + fwVersion + '</span>';
-                        statusContainer.className = "status-box error";
-                    });
-                }
+        });
+    } else {
+        if (window.applicationCache.status == '0') {
+            if (fwNum >= 7.00 && fwNum <= 8.52) {
+                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                setTimeout(function() {
+                    window.location.replace("cache700.html");
+                }, 500);
+            } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                setTimeout(function() {
+                    window.location.replace("cache900.html");
+                }, 500);
+            } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                setTimeout(function() {
+                    window.location.replace("cachecss.html");
+                }, 500);
+            } else if (fwNum >= 11.50 && fwNum <= 13.00) {
+                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+                setTimeout(function() {
+                    window.location.replace("cacheslopkit.html");
+                }, 500);
             } else {
-                if (fwNum >= 7.00 && fwNum <= 8.52) {
-                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                    var script = document.createElement('script');
-                    script.type = 'module';
-                    script.src = "700/alert.js";
-                    script.onerror = onScriptError;
-                    document.head.appendChild(script);
-                }
-                else if (fwNum >= 9.00 && fwNum <= 9.60) {
-                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                    var script = document.createElement('script');
-                    script.type = 'module';
-                    script.src = "900/alert.js";
-                    script.onerror = onScriptError;
-                    document.head.appendChild(script);
-                }
-                else if (fwNum >= 10.00 && fwNum <= 11.02) {
-                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                    var script = document.createElement('script');
-                    script.src = "css/main.js";
-                    script.onerror = onScriptError;
-                    script.onload = function () {
-                        setTimeout(function () {
-                            doJb();
-                        }, 500);
-                    };
-                    document.head.appendChild(script);
-                }
-                else if (fwNum >= 11.50 && fwNum <= 12.02) {
-                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                    var script = document.createElement('script');
-                    script.type = 'module';
-                    script.src = "slopkit/chain_lapse.js";
-                    script.onerror = onScriptError;
-                    document.head.appendChild(script);
-                }
-                else if (fwNum >= 12.50 && fwNum <= 13.00) {
-                    msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                    var script = document.createElement('script');
-                    script.type = 'module';
+                document.addEventListener("DOMContentLoaded", () => {
+                    msgs.innerHTML = 'Unsupported Firmware: <span style="color: red;">' + fwVersion + '</span>';
+                    statusContainer.className = "status-box error";
+                });
+            }
+        } else {
+            if (fwNum >= 7.00 && fwNum <= 8.52) {
+                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                var script = document.createElement('script');
+                script.type = 'module';
+                script.src = "700/alert.js";
+                script.onerror = onScriptError;
+                document.head.appendChild(script);
+            }
+            else if (fwNum >= 9.00 && fwNum <= 9.60) {
+                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                var script = document.createElement('script');
+                script.type = 'module';
+                script.src = "900/alert.js";
+                script.onerror = onScriptError;
+                document.head.appendChild(script);
+            }
+            else if (fwNum >= 10.00 && fwNum <= 11.02) {
+                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                var script = document.createElement('script');
+                script.src = "css/main.js";
+                script.onerror = onScriptError;
+                script.onload = function () {
+                    setTimeout(function () {
+                        doJb();
+                    }, 500);
+                };
+                document.head.appendChild(script);
+            }
+            else if (fwNum >= 11.50 && fwNum <= 13.00) {
+                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+                var script = document.createElement('script');
+                script.type = 'module';
+                script.src = "slopkit/chain_lapse.js";
+                script.onerror = onScriptError;
+                document.head.appendChild(script);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
+ 
                     script.src = "slopkit/chain_poops.js";
                     script.onerror = onScriptError;
                     document.head.appendChild(script);
