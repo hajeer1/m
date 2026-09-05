@@ -6,17 +6,31 @@
     <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        .slideshow-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+        .slideshow-bg img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .slideshow-bg img.active { opacity: 1; }
+        .slideshow-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(5, 11, 20, 0.75);
+            z-index: 1;
+        }
         body {
-            background-color: #050b14;
             color: #ffffff;
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            padding: 30px 15px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            direction: rtl;
         }
         .gradient-wrap {
             width: 100%;
@@ -25,162 +39,33 @@
             background: linear-gradient(135deg, #00ff88 0%, #00d2ff 50%, #8844ee 100%);
             padding: 3px;
             border-radius: 22px;
+            position: relative;
+            z-index: 2;
         }
         .container {
-            background: #091322;
+            background: rgba(9, 19, 34, 0.85);
             border-radius: 20px;
             padding: 30px 25px;
+            backdrop-filter: blur(6px);
         }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 1px solid #1e3a5f;
-            padding-bottom: 18px;
-            margin-bottom: 30px;
-        }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #1e3a5f; padding-bottom: 18px; margin-bottom: 30px; }
         .title-box { text-align: right; }
-        .store-name {
-            color: #ffffff;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 4px;
-        }
+        .store-name { color: #ffffff; font-size: 22px; font-weight: bold; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
         .bolt { color: #00ffcc; font-size: 22px; }
-        .subtitle {
-            font-size: 15px;
-            color: #00d2ff;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 3px 0 6px 0;
-        }
+        .subtitle { font-size: 15px; color: #00d2ff; font-weight: bold; letter-spacing: 2px; margin: 3px 0 6px 0; }
         .phone { font-size: 13px; color: #8899aa; letter-spacing: 1px; }
         .badges { display: flex; gap: 6px; align-items: flex-start; margin-top: 4px; }
-        .badge-hack {
-            background: #5b1f8a;
-            color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        .badge-ver {
-            background: #0d2a4a;
-            color: #00d2ff;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            border: 1px solid #00d2ff;
-        }
-        .section-title {
-            font-size: 20px;
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-        .btn-main {
-            display: block;
-            width: 100%;
-            padding: 28px 20px;
-            font-size: 22px;
-            font-weight: 900;
-            color: #1a1a1a;
-            background: linear-gradient(145deg, #ffd700, #ffaa00);
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
-            margin-bottom: 30px;
-            transition: all 0.2s;
-        }
-        .btn-main:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
-        }
+        .badge-hack { background: #5b1f8a; color: #ffffff; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: bold; letter-spacing: 1px; }
+        .badge-ver { background: #0d2a4a; color: #00d2ff; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: bold; border: 1px solid #00d2ff; }
+        .section-title { font-size: 20px; color: #ffd700; font-weight: bold; margin-bottom: 25px; letter-spacing: 1px; }
+        .btn-main { display: block; width: 100%; padding: 28px 20px; font-size: 22px; font-weight: 900; color: #1a1a1a; background: linear-gradient(145deg, #ffd700, #ffaa00); border: none; border-radius: 14px; cursor: pointer; letter-spacing: 1px; box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4); margin-bottom: 30px; transition: all 0.2s; }
+        .btn-main:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6); }
         .btn-main:active { transform: scale(0.98); }
-        .warning {
-            color: #ff4d4d;
-            font-weight: bold;
-            font-size: 15px;
-            margin: 20px 0;
-            text-align: right;
-        }
-        .footer-box {
-            background: #0d1b2a;
-            border: 1px solid #1b4965;
-            border-radius: 12px;
-            padding: 18px;
-            margin-top: 20px;
-        }
-        .footer-box p {
-            font-size: 14px;
-            margin: 0 0 14px 0;
-            color: #cccccc;
-            text-align: right;
-        }
+        .warning { color: #ff4d4d; font-weight: bold; font-size: 15px; margin: 20px 0; text-align: right; }
+        .footer-box { background: rgba(13, 27, 42, 0.9); border: 1px solid #1b4965; border-radius: 12px; padding: 18px; margin-top: 20px; }
+        .footer-box p { font-size: 14px; margin: 0 0 14px 0; color: #cccccc; text-align: right; }
         .social-row { display: flex; gap: 12px; margin-bottom: 12px; }
-        .social-btn {
-            flex: 1;
-            background: #0a1929;
-            border: 1px solid #1b4965;
-            color: #ffffff;
-            padding: 14px 10px;
-            border-radius: 10px;
-            font-size: 13px;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        .social-btn .platform { color: #8899aa; font-size: 12px; display: block; margin-bottom: 5px; }
-        .social-btn strong { color: #ffffff; font-size: 13px; }
-        .whatsapp-btn {
-            background: #0a1929;
-            border: 1px solid #1b4965;
-            color: #ffffff;
-            width: 100%;
-            padding: 14px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-        .whatsapp-btn .platform { color: #8899aa; font-size: 12px; display: block; margin-bottom: 5px; }
-        .whatsapp-btn strong { color: #ffffff; }
-        .credit { margin-top: 20px; font-size: 13px; color: #555; }
-        .credit a { color: #ffd700; text-decoration: none; }
-        .thanks { color: #444; font-size: 12px; margin-top: 6px; }
-    </style>
-</head>
-<body>
-<div class="gradient-wrap">
-<div class="container">
-    <div class="header">
-        <div class="title-box">
-            <p class="store-name"><span class="bolt">⚡</span> HAJEER FOR PLAYSTATION</p>
-            <p class="subtitle">PS4 JAILBREAK</p>
-            <p class="phone">+962798945638</p>
-        </div>
-        <div class="badges">
-            <span class="badge-hack">HACK</span>
-            <span class="badge-ver">7.00-13.0</span>
-        </div>
-    </div>
-    <div class="section-title">⚡ GoldHEN Exploit Host</div>
-    <button class="btn-main" onclick="location.replace('ran/index.html')">
-        » GoldHEN 7.00 - 13.00 «
-    </button>
-    <div class="warning">⚠️ هذه الصفحة مخصصة فقط للبلايستيشن فور</div>
-    <div class="footer-box">
+        .social-btn { flex: 1; background: #0a1929; border: 1px solid #1b4965; color: #ffffff; padding: 14px 10px; border-radius: 10px; font-size: 13px; text-decoration: none; display: inline-block; text-align: center; }
         <p>لا تنسى تتابعنا ليصلك كل جديد</p>
         <div class="social-row">
             <a href="https://facebook.com/hajeerforplaystation" target="_blank" class="social-btn">
@@ -201,5 +86,14 @@
     <p class="thanks">❤️ Special thanks to all scene developers</p>
 </div>
 </div>
+<script>
+    var images = document.querySelectorAll('.slideshow-bg img');
+    var current = 0;
+    setInterval(function() {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+    }, 2000);
+</script>
 </body>
-</html>
+    </html> 
