@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
+    <title>hajeer for PlayStation - Exploit Host</title>
     <style>
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         .slideshow-bg {
             position: fixed;
             top: 0; left: 0;
@@ -31,17 +31,37 @@
         }
         body {
             color: #ffffff;
-        .badges { display: flex; gap: 5px; align-items: flex-start; margin-top: 3px; }
-        .badge-hack { background: #5b1f8a; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
-        .badge-ver { background: #0d2a4a; color: #00d2ff; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; border: 1px solid #00d2ff; }
-        .status-box { background: rgba(13, 27, 42, 0.9); border: 1px solid #00d2ff; border-radius: 10px; padding: 12px; margin-bottom: 12px; font-weight: bold; font-size: 14px; color: #00ffcc; }
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            padding: 30px 15px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            direction: rtl;
+            position: relative;
+            z-index: 1;
+        }
+        .gradient-wrap {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background: linear-gradient(135deg, #00ff88 0%, #00d2ff 50%, #8844ee 100%);
+            padding: 3px;
+            border-radius: 22px;
+            position: relative;
+            z-index: 2;
+        }
+        .container {
+            background: rgba(9, 19, 34, 0.85);
+            border-radius: 20px;
+            padding: 30px 25px;
+            backdrop-filter: blur(6px);
+        }
+        .status-box { background: rgba(13, 27, 42, 0.9); border: 1px solid #00d2ff; border-radius: 10px; padding: 15px; margin-bottom: 20px; font-weight: bold; font-size: 16px; color: #00ffcc; }
         .status-box.error { border-color: #ff4d4d; color: #ff4d4d; }
-        .card { background: rgba(13, 27, 42, 0.9); border: 1px solid #1b4965; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; text-align: right; }
-        .card label { display: block; color: #00d2ff; font-size: 13px; margin-bottom: 5px; }
-        .card .value { font-size: 15px; font-weight: bold; color: #ffffff; }
-        .warning { color: #ff4d4d; font-weight: bold; font-size: 13px; margin: 14px 0; text-align: right; }
-        .footer-box { background: rgba(13, 27, 42, 0.9); border: 1px solid #1b4965; border-radius: 10px; padding: 14px; margin-top: 14px; }
-        .footer-box p { font-size: 13px; margin: 0 0 12px 0; color: #cccccc; text-align: right; }
+        .footer-box { background: rgba(13, 27, 42, 0.9); border: 1px solid #1b4965; border-radius: 10px; padding: 14px; margin-top: 14px; text-align: right; }
+        .footer-box p { font-size: 13px; margin: 0 0 12px 0; color: #cccccc; }
         .social-row { display: flex; gap: 10px; margin-bottom: 10px; }
         .social-btn { flex: 1; background: #0a1929; border: 1px solid #1b4965; color: #ffffff; padding: 10px 8px; border-radius: 8px; font-size: 12px; text-decoration: none; display: inline-block; text-align: center; }
         .social-btn .platform { color: #8899aa; font-size: 11px; display: block; margin-bottom: 4px; }
@@ -63,7 +83,9 @@
 </div>
 <div class="gradient-wrap">
 <div class="container">
-    <div class="header">
+    <div id="statusContainer" class="status-box">
+        <div id="msgs">جاري فحص إصدار الجهاز...</div>
+    </div>
     <div class="footer-box">
         <p>لا تنسى تتابعنا ليصلك كل جديد</p>
         <div class="social-row">
@@ -91,6 +113,7 @@
         current = (current + 1) % images.length;
         images[current].classList.add('active');
     }, 2000);
+
     var uaFull = navigator.userAgent;
     var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
     var isPS4 = match !== null;
@@ -98,10 +121,12 @@
     var fwNum = parseFloat(fwVersion);
     var msgs = document.getElementById('msgs');
     var statusContainer = document.getElementById('statusContainer');
+
     function onScriptError() {
         msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
         statusContainer.className = "status-box error";
     }
+
     if (window.applicationCache.status == '0') {
         if (fwNum >= 7.00 && fwNum <= 8.52) {
             msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
@@ -120,35 +145,24 @@
             statusContainer.className = "status-box error";
         }
     } else {
-            script.type = 'module';
-            script.src = "900/alert.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+        if (fwNum >= 7.00 && fwNum <= 8.52) {
             msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
             var script = document.createElement('script');
-            script.src = "css/main.js";
+            script.src = "goldhen_2.4b18.10.bin"; // أو استبدل حسب ملف التشغيل لديك
             script.onerror = onScriptError;
-            script.onload = function() { setTimeout(function() { doJb(); }, 500); };
             document.head.appendChild(script);
-        } else if (fwNum >= 11.50 && fwNum <= 12.02) {
+        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
             msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
             var script = document.createElement('script');
             script.type = 'module';
-            script.src = "slopkit/chain_lapse.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        } else if (fwNum >= 12.50 && fwNum <= 13.00) {
-            msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-            var script = document.createElement('script');
-            script.type = 'module';
-            script.src = "slopkit/chain_poops.js";
+            script.src = "cache900.html"; 
             script.onerror = onScriptError;
             document.head.appendChild(script);
         } else {
-            msgs.innerHTML = "⏳ Loading GoldHEN v2.4b18.10... Please Wait";
+            msgs.innerHTML = "⏳ Loading GoldHEN... Please Wait";
         }
     }
 </script>
 </body>
 </html>
+ 
