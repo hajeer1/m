@@ -84,7 +84,7 @@
 <div class="gradient-wrap">
 <div class="container">
     <div id="statusContainer" class="status-box">
-        <div id="msgs">جاري فحص إصدار الجهاز...</div>
+        <div id="msgs">⏳ Loading GoldHEN v2.4b18.10... Please Wait</div>
     </div>
     <div class="footer-box">
         <p>لا تنسى تتابعنا ليصلك كل جديد</p>
@@ -113,7 +113,6 @@
         current = (current + 1) % images.length;
         images[current].classList.add('active');
     }, 2000);
-
     var uaFull = navigator.userAgent;
     var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
     var isPS4 = match !== null;
@@ -121,12 +120,10 @@
     var fwNum = parseFloat(fwVersion);
     var msgs = document.getElementById('msgs');
     var statusContainer = document.getElementById('statusContainer');
-
     function onScriptError() {
         msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
         statusContainer.className = "status-box error";
     }
-
     if (window.applicationCache.status == '0') {
         if (fwNum >= 7.00 && fwNum <= 8.52) {
             msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
@@ -148,21 +145,43 @@
         if (fwNum >= 7.00 && fwNum <= 8.52) {
             msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
             var script = document.createElement('script');
-            script.src = "goldhen_2.4b18.10.bin"; // أو استبدل حسب ملف التشغيل لديك
+            script.type = 'module';
+            script.src = "700/alert.js";
             script.onerror = onScriptError;
             document.head.appendChild(script);
         } else if (fwNum >= 9.00 && fwNum <= 9.60) {
             msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
             var script = document.createElement('script');
             script.type = 'module';
-            script.src = "cache900.html"; 
+            script.src = "900/alert.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+            msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+            var script = document.createElement('script');
+            script.src = "css/main.js";
+            script.onerror = onScriptError;
+            script.onload = function() { setTimeout(function() { doJb(); }, 500); };
+            document.head.appendChild(script);
+        } else if (fwNum >= 11.50 && fwNum <= 12.02) {
+            msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_lapse.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        } else if (fwNum >= 12.50 && fwNum <= 13.00) {
+            msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_poops.js";
             script.onerror = onScriptError;
             document.head.appendChild(script);
         } else {
-            msgs.innerHTML = "⏳ Loading GoldHEN... Please Wait";
+            msgs.innerHTML = 'Unsupported Firmware: <span style="color:red;">' + fwVersion + '</span>';
+            statusContainer.className = "status-box error";
         }
     }
 </script>
 </body>
-</html>
- 
+</html> 
