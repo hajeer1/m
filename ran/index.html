@@ -6,227 +6,64 @@
     <title>hajeer for PlayStation - Exploit Host 7.00-13.00</title>
     <style>
         * { box-sizing: border-box; }
+        .slideshow-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+        .slideshow-bg img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .slideshow-bg img.active { opacity: 1; }
+        .slideshow-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(5, 11, 20, 0.75);
+            z-index: 1;
+        }
         body {
-            background-color: #050b14;
             color: #ffffff;
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 15px;
-            min-height: 100vh;
-        }
-        .gradient-wrap {
-            max-width: 450px;
-            margin: auto;
-            background: linear-gradient(135deg, #00ff88 0%, #00d2ff 50%, #8844ee 100%);
-            padding: 3px;
-            border-radius: 18px;
-        }
-        .container {
-            background: #091322;
-            border-radius: 15px;
-            padding: 15px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 1px solid #1e3a5f;
-            padding-bottom: 12px;
-            margin-bottom: 15px;
-        }
-        .title-box { text-align: right; }
-        .title-box .store-name {
-            margin: 0;
-            color: #ffffff;
-            font-size: 17px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .title-box .store-name .bolt {
-            color: #00ffcc;
-            font-size: 18px;
-        }
-        .title-box .subtitle {
-            font-size: 13px;
-            color: #00d2ff;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 2px 0 4px 0;
-        }
-        .title-box .phone {
-            font-size: 11px;
-            color: #8899aa;
-            letter-spacing: 1px;
-        }
-        .badges {
-            display: flex;
-            gap: 5px;
-            align-items: flex-start;
-            margin-top: 3px;
-        }
-        .badge-hack {
-            background: #5b1f8a;
-            color: #ffffff;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        .badge-ver {
-            background: #0d2a4a;
-            color: #00d2ff;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: bold;
-            border: 1px solid #00d2ff;
-        }
-        .status-box {
-            background: #0d1b2a;
-            border: 1px solid #00d2ff;
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 12px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #00ffcc;
-        }
-        .status-box.error {
-            border-color: #ff4d4d;
-            color: #ff4d4d;
-        }
-        .card {
-            background: #0d1b2a;
-            border: 1px solid #1b4965;
-            border-radius: 10px;
-            padding: 12px 14px;
-            margin-bottom: 10px;
-            text-align: right;
-        }
-        .card label {
-            display: block;
-            color: #00d2ff;
-            font-size: 13px;
-            margin-bottom: 5px;
-        }
-        .card .value {
-            font-size: 15px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        .warning {
-            color: #ff4d4d;
-            font-weight: bold;
-            font-size: 13px;
-            margin: 14px 0;
-            text-align: right;
-        }
-        .footer-box {
-            background: #0d1b2a;
-            border: 1px solid #1b4965;
-            border-radius: 10px;
-            padding: 14px;
-            margin-top: 14px;
-        }
-        .footer-box p {
-            font-size: 13px;
-            margin: 0 0 12px 0;
-            color: #cccccc;
-            text-align: right;
-        }
-        .social-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .social-btn {
-            flex: 1;
-            background: #0a1929;
-            border: 1px solid #1b4965;
-            color: #ffffff;
-            padding: 10px 8px;
-            border-radius: 8px;
-            font-size: 12px;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        .social-btn .platform {
-            color: #8899aa;
-            font-size: 11px;
-            display: block;
-            margin-bottom: 4px;
-        }
+        .badges { display: flex; gap: 5px; align-items: flex-start; margin-top: 3px; }
+        .badge-hack { background: #5b1f8a; color: #ffffff; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+        .badge-ver { background: #0d2a4a; color: #00d2ff; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; border: 1px solid #00d2ff; }
+        .status-box { background: rgba(13, 27, 42, 0.9); border: 1px solid #00d2ff; border-radius: 10px; padding: 12px; margin-bottom: 12px; font-weight: bold; font-size: 14px; color: #00ffcc; }
+        .status-box.error { border-color: #ff4d4d; color: #ff4d4d; }
+        .card { background: rgba(13, 27, 42, 0.9); border: 1px solid #1b4965; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; text-align: right; }
+        .card label { display: block; color: #00d2ff; font-size: 13px; margin-bottom: 5px; }
+        .card .value { font-size: 15px; font-weight: bold; color: #ffffff; }
+        .warning { color: #ff4d4d; font-weight: bold; font-size: 13px; margin: 14px 0; text-align: right; }
+        .footer-box { background: rgba(13, 27, 42, 0.9); border: 1px solid #1b4965; border-radius: 10px; padding: 14px; margin-top: 14px; }
+        .footer-box p { font-size: 13px; margin: 0 0 12px 0; color: #cccccc; text-align: right; }
+        .social-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .social-btn { flex: 1; background: #0a1929; border: 1px solid #1b4965; color: #ffffff; padding: 10px 8px; border-radius: 8px; font-size: 12px; text-decoration: none; display: inline-block; text-align: center; }
+        .social-btn .platform { color: #8899aa; font-size: 11px; display: block; margin-bottom: 4px; }
         .social-btn strong { color: #ffffff; font-size: 12px; }
-        .whatsapp-btn {
-            background: #0a1929;
-            border: 1px solid #1b4965;
-            color: #ffffff;
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-        .whatsapp-btn .platform {
-            color: #8899aa;
-            font-size: 11px;
-            display: block;
-            margin-bottom: 4px;
-        }
+        .whatsapp-btn { background: #0a1929; border: 1px solid #1b4965; color: #ffffff; width: 100%; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; text-decoration: none; display: block; text-align: center; }
+        .whatsapp-btn .platform { color: #8899aa; font-size: 11px; display: block; margin-bottom: 4px; }
         .whatsapp-btn strong { color: #ffffff; }
     </style>
 </head>
 <body>
-
+<div class="slideshow-bg">
+    <img src="images (45).jpeg" class="active">
+    <img src="images (46).jpeg">
+    <img src="images (47).jpeg">
+    <img src="images (48).jpeg">
+    <img src="images (49).jpeg">
+    <img src="33f39cad34ac468a040ffed5a43149fb4329ec6c73326838.jpg">
+    <img src="1e48e3b7d11fc2da3de62ad8a2a2d3c2882e1bb4ce6caadb.jpg">
+</div>
 <div class="gradient-wrap">
 <div class="container">
-
     <div class="header">
-        <div class="title-box">
-            <p class="store-name">
-                <span class="bolt">⚡</span> HAJEER FOR PLAYSTATION
-            </p>
-            <p class="subtitle">PS4 JAILBREAK</p>
-            <p class="phone">+962798945638</p>
-        </div>
-        <div class="badges">
-            <span class="badge-hack">HACK</span>
-            <span class="badge-ver">7.00-13.0</span>
-        </div>
-    </div>
-
-    <div id="statusContainer" class="status-box">
-        <span id="msgs">⏳ Loading GoldHEN v2.4b18.10... Please Wait</span>
-    </div>
-
-    <div class="card">
-        <label>اسم المحل</label>
-        <div class="value">hajeer for PlayStation</div>
-    </div>
-
-    <div class="card">
-        <label>رقم المحل</label>
-        <div class="value">0798945638</div>
-    </div>
-
-    <div class="card">
-        <label>موقع المحل</label>
-        <div class="value">عمان – ابو نصير – دوار الثقافة</div>
-    </div>
-
-    <div class="warning">
-        ⚠️ هذه الصفحة مخصصة فقط للبلايستيشن فور
-    </div>
-
     <div class="footer-box">
         <p>لا تنسى تتابعنا ليصلك كل جديد</p>
         <div class="social-row">
@@ -244,11 +81,16 @@
             <strong>00962798945638</strong>
         </a>
     </div>
-
 </div>
 </div>
-
 <script>
+    var images = document.querySelectorAll('.slideshow-bg img');
+    var current = 0;
+    setInterval(function() {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+    }, 2000);
     var uaFull = navigator.userAgent;
     var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
     var isPS4 = match !== null;
@@ -256,77 +98,57 @@
     var fwNum = parseFloat(fwVersion);
     var msgs = document.getElementById('msgs');
     var statusContainer = document.getElementById('statusContainer');
-
     function onScriptError() {
         msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
         statusContainer.className = "status-box error";
     }
-
-    if (!isPS4) {
-        document.addEventListener("DOMContentLoaded", () => {
-            msgs.innerHTML = "Only for PS4 with Firmware 7.00 to 13.00";
-            statusContainer.className = "status-box error";
-        });
-    } else {
-        if (window.applicationCache.status == '0') {
-            if (fwNum >= 7.00 && fwNum <= 8.52) {
-                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                setTimeout(function() { window.location.replace("cache700.html"); }, 500);
-            } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                setTimeout(function() { window.location.replace("cache900.html"); }, 500);
-            } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                setTimeout(function() { window.location.replace("cachecss.html"); }, 500);
-            } else if (fwNum >= 11.50 && fwNum <= 13.00) {
-                msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
-                setTimeout(function() { window.location.replace("cacheslopkit.html"); }, 500);
-            } else {
-                document.addEventListener("DOMContentLoaded", () => {
-                    msgs.innerHTML = 'Unsupported Firmware: <span style="color:red;">' + fwVersion + '</span>';
-                    statusContainer.className = "status-box error";
-                });
-            }
+    if (window.applicationCache.status == '0') {
+        if (fwNum >= 7.00 && fwNum <= 8.52) {
+            msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+            setTimeout(function() { window.location.replace("cache700.html"); }, 500);
+        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+            msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+            setTimeout(function() { window.location.replace("cache900.html"); }, 500);
+        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+            msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+            setTimeout(function() { window.location.replace("cachecss.html"); }, 500);
+        } else if (fwNum >= 11.50 && fwNum <= 13.00) {
+            msgs.innerHTML = "Installing Cache for FW " + fwVersion + "...";
+            setTimeout(function() { window.location.replace("cacheslopkit.html"); }, 500);
         } else {
-            if (fwNum >= 7.00 && fwNum <= 8.52) {
-                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                var script = document.createElement('script');
-                script.type = 'module';
-                script.src = "700/alert.js";
-                script.onerror = onScriptError;
-                document.head.appendChild(script);
-            } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                var script = document.createElement('script');
-                script.type = 'module';
-                script.src = "900/alert.js";
-                script.onerror = onScriptError;
-                document.head.appendChild(script);
-            } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                var script = document.createElement('script');
-                script.src = "css/main.js";
-                script.onerror = onScriptError;
-                script.onload = function() { setTimeout(function() { doJb(); }, 500); };
-                document.head.appendChild(script);
-            } else if (fwNum >= 11.50 && fwNum <= 12.02) {
-                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                var script = document.createElement('script');
-                script.type = 'module';
-                script.src = "slopkit/chain_lapse.js";
-                script.onerror = onScriptError;
-                document.head.appendChild(script);
-            } else if (fwNum >= 12.50 && fwNum <= 13.00) {
-                msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
-                var script = document.createElement('script');
-                script.type = 'module';
-                script.src = "slopkit/chain_poops.js";
-                script.onerror = onScriptError;
-                document.head.appendChild(script);
-            }
+            msgs.innerHTML = 'Unsupported Firmware: <span style="color:red;">' + fwVersion + '</span>';
+            statusContainer.className = "status-box error";
+        }
+    } else {
+            script.type = 'module';
+            script.src = "900/alert.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+            msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+            var script = document.createElement('script');
+            script.src = "css/main.js";
+            script.onerror = onScriptError;
+            script.onload = function() { setTimeout(function() { doJb(); }, 500); };
+            document.head.appendChild(script);
+        } else if (fwNum >= 11.50 && fwNum <= 12.02) {
+            msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_lapse.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        } else if (fwNum >= 12.50 && fwNum <= 13.00) {
+            msgs.innerHTML = "Loading Exploit for FW " + fwVersion + "...";
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_poops.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        } else {
+            msgs.innerHTML = "⏳ Loading GoldHEN v2.4b18.10... Please Wait";
         }
     }
 </script>
-
 </body>
 </html>
